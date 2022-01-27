@@ -1,0 +1,6 @@
+<div class="buttons">
+    <ng-template ngFor let-letter [ngForOf]="letters">
+        <app-button [letter]="letter" (btnClick)="onBtnClicked($event)"></app-button>
+        <br *ngIf="newLineAfterLetter(letter)">
+    </ng-template>
+</div>

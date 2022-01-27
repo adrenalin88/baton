@@ -1,0 +1,5 @@
+<div class="game">
+    <app-header></app-header>
+    <app-board [words]="words"></app-board>
+    <app-buttons [letters]="buttons" (btnClick)="onBtnClicked($event)"></app-buttons>
+</div>

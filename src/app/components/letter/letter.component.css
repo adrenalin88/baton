@@ -1,0 +1,22 @@
+.letter{
+   border: 1px solid black; 
+   padding: 10px;
+   box-sizing: border-box;
+   font-size: 24px;
+   font-family: monospace;
+   display: flex;
+   align-items: center;
+   text-transform: uppercase;
+   width: 40px;
+   height: 40px;
+   background-color: lightgray;
+}
+.letter-correct{
+    background-color: #6AAA64;
+}
+.letter-wrong-position{
+    background-color: #C9B458;
+}
+.letter-wrong{
+    background-color: #787C7E;
+}

@@ -1,0 +1,16 @@
+.button{
+    font-size: 18px;
+    font-family: monospace;
+    text-transform: uppercase;
+    margin: 5px 2px;
+    padding: 5px;
+}
+.button-correct{
+    background-color: #6AAA64;
+}
+.button-wrong-position{
+    background-color: #C9B458;
+}
+.button-wrong{
+    background-color: #787C7E;
+}
