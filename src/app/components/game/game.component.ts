@@ -108,12 +108,6 @@ export class GameComponent implements OnInit {
 
   finishGame(){
     this.finished = true;
-    if (this.win){
-      alert('You win!')
-    }
-    else{
-      alert('You lose!')
-    }
   }
 
   checkWord(){
