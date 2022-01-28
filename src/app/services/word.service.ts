@@ -8,7 +8,7 @@ import { MAX_KEY_INDEX, MAX_WORD_INDEX } from '../app.constants';
   providedIn: 'root'
 })
 export class WordService {
-  private apiUrl: string = 'http://localhost:3000/words/';
+  private apiUrl: string = 'https://baton-dict.herokuapp.com/words/';
   private checkUrl: string = this.apiUrl + "?word=";
 
   keyWord: string = '';
