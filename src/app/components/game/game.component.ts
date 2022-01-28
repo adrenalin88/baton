@@ -97,30 +97,41 @@ export class GameComponent implements OnInit {
     }
 
     this.checkWord();
-
-    this.attempt++;
-    this.column = 0;
-
-    if (this.attempt == this.maxAttemptCount){
-      this.finishGame();
-    }
   }
 
   finishGame(){
     this.finished = true;
+    if (!this.win){
+      alert(this.wordService.getKeyWord());
+    }
   }
 
   checkWord(){
     let currentWord = this.words[this.attempt];
-    let result = this.wordService.checkWord(currentWord.getWord());
 
-    currentWord.applyCheck(result);
-    this.updateButtons(currentWord);
+    this.wordService.findWord(currentWord.getWord()).subscribe(result=> {
+      if (result && result.length){
+        let checkResult = this.wordService.checkWord(currentWord.getWord());
 
-    if (result.every(ls => ls == LetterState.Correct)){
-      this.win = true;
-      this.finishGame();
-    }
+        currentWord.applyCheck(checkResult);
+        this.updateButtons(currentWord);
+    
+        if (checkResult.every(ls => ls == LetterState.Correct)){
+          this.win = true;
+          this.finishGame();
+        }
+
+        this.attempt++;
+        this.column = 0;
+    
+        if (this.attempt == this.maxAttemptCount){
+          this.finishGame();
+        }
+      }
+      else{
+        alert("Такого слова не знаем. Попробуйте 'батон'."); 
+      }
+    });
   }
 
   updateButtons(currentWord: Word){

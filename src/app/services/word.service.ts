@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { LetterState } from '../models/LetterState';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
-import { MAX_WORD_INDEX } from '../app.constants';
+import { MAX_KEY_INDEX, MAX_WORD_INDEX } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WordService {
   private apiUrl: string = 'http://localhost:3000/words/';
+  private checkUrl: string = this.apiUrl + "?word=";
 
   keyWord: string = '';
 
@@ -21,7 +22,7 @@ export class WordService {
   }
 
   loadRandomWord(): Observable<any> {
-    const wordNumber = this.getRandomInt(0, MAX_WORD_INDEX);
+    const wordNumber = this.getRandomInt(0, MAX_KEY_INDEX);
 
     return this.http.get(this.apiUrl + wordNumber);
   }
@@ -59,5 +60,9 @@ export class WordService {
     }
 
     return result;
+  }
+
+  findWord(guess: string): Observable<any> {
+    return this.http.get(this.checkUrl + guess);
   }
 }
